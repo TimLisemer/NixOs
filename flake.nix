@@ -4,6 +4,7 @@
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
     disko.url = "github:nix-community/disko";
+    comin.url = "github:nlewo/comin";
   };
 
   outputs = { self, nixpkgs, flatpaks, disko, ... }@attrs: {
@@ -11,6 +12,7 @@
       system = "x86_64-linux";
       specialArgs = attrs;
       modules = [ 
+        comin.nixosModules.comin
         disko.nixosModules.disko
         flatpaks.nixosModules.default
         # (import ./install.nix { disks = [ "/dev/nvme0n1" ]; }) # Edit this if hardware changed in the future
