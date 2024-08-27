@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ../hardware-configuration.nix
+      (import ./install.nix { disks = [ "/dev/nvme0n1" ]; }) # Edit this if hardware changed in the future
       ./home-manager.nix
       ../packages/packages.nix
       ../desktop-environments/desktop-enviroments.nix
